@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.smhrd.domain.BoardVO;
@@ -71,9 +72,9 @@ public class BoardController{ //new BoardController(); ->Spring container(DI)
 	}
 
 	@RequestMapping("/boardDeleteAjax.do")
-	public @ResponseBody int boardDeleteAjax(int idx ) {
-		 BoardMapper.boardDeleteAjax(idx);
-		 int cnt =1;
+	public @ResponseBody int boardDeleteAjax(@RequestParam("idx") int idx ) {
+		 int cnt= BoardMapper.boardDeleteAjax(idx);
+		 
 		return cnt; 
 	}
 }

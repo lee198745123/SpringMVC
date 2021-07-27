@@ -41,12 +41,12 @@
  	 //반복문
  	 $.each(data,(index,obj)=>{// obj는 위에있는 data의 {}이런식의 하나의 데이터임
  		 html+="<tr>";
- 	 	 html+="<td><a>"+obj.idx+"</a></td>";
+ 	 	 html+="<td id='idx"+index+"'>"+obj.idx+"</td>";
  	 	 html+="<td>"+obj.title+"</td>";
  	 	 html+="<td>"+obj.count+"</td>";
  	 	 html+="<td>"+obj.writer+"</td>";
  	 	 html+="<td>"+obj.indate+"</td>"; 	 
- 	 	 html+="<td><button class='btn btn-warning btn-sm' onclick='delBtn("+obj.idx+")' >삭제</button></td>"; 	 
+ 	 	 html+="<td><button class='btn btn-warning btn-sm' onclick='goDelAjax("+index+")' >삭제Ajax</button></td>"; 	 
  	 	 html+="</tr>";
  	});
  	 
@@ -54,14 +54,15 @@
  	 $("#list").html(html);// 밑에 있는div태그에있는id =list에 보여주기 위한 코드
  	 
  }
- function delBtn(idx) {
+ function goDelAjax(index) {
+	 var idx=$("#idx"+index).text();
 	   if(confirm ("정말로 삭제 하시겠습니까?")==true){
 	      $.ajax({
 	         url: "${cpath}/boardDeleteAjax.do",
 	         type:"get",		//보내는 데이터 타입
 	         data:{"idx" : idx}, // 보내는 데이터
 	         success : goJson,
-	         error : function() {alert("error")}               
+	         error : function() {alert("error");}               
 	         
 	      });
 	   }else{

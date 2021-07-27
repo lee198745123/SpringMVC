@@ -33,7 +33,7 @@ public interface BoardMapper {
 		public List<BoardVO> boardListAjax();
 		
 		@Delete("delete from tbl_board where idx=#{idx}")
-		public void boardDeleteAjax(int idx);
+		public int boardDeleteAjax(int idx);
 		
 		
 		
