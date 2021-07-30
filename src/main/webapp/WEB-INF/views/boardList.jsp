@@ -39,7 +39,7 @@
  	 html+="<td>삭제</td>"; 	 
  	 html+="</tr>";
  	 //반복문
- 	 $.each(data,(index,obj)=>{// obj는 위에있는 data의 {}이런식의 하나의 데이터임
+ 	 $.each(data,(index,obj)=>{  // obj는 위에있는 data의 {}이런식의 하나의 데이터임
  		 html+="<tr>";
  	 	 html+="<td id='idx"+index+"'>"+obj.idx+"</td>";
  	 	 html+="<td>"+obj.title+"</td>";
@@ -99,6 +99,24 @@
 					</c:forEach>
 				</table>
 				<button class="btn btn-info btn-sm" onclick="goWrite()">글쓰기 </button><br><br>
+				<div >
+					<form action="${cpath}/boardSearch.do" method="post" class="table">
+						<table class="table">
+							<tr>
+								<td><select name="part" class="form-control">
+										<option value="title">제목</option>
+										<option value="writer">작성자</option>
+										<option value="contents">내용</option>
+
+								</select></td>
+								<td><input type="text" name="keyword" class="form-control">
+								</td>
+								<td><button class="btn" type="submit">검색</button></td>
+							</tr>
+
+						</table>
+					</form>
+				</div>
 				<button class="btn btn-success btn-sm" onclick="goJson()">JSON DATA 가져오기(Ajax)</button>
 				<div id="list">여기에 게시판 리스트를 출력하시오</div>
 			</div>

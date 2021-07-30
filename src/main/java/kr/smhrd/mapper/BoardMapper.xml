@@ -20,5 +20,10 @@
 	<select id="boardListAjax" resultType="boardVO">
 		select* from tbl_board order by idx desc
 	</select>
+	
+	<select id="boardSearch" resultType="boardVO" parameterType="searchVO">
+	    select * from tbl_board where ${part} like concat('%',#{keyword},'%')
+	    	<!--title,writer,contents 이것이 바뀌어야하기때문에 ${}사용함 이것을 동적 쿼리라고함  -->		
+	</select>
 
 </mapper>

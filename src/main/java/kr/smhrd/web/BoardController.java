@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.smhrd.domain.BoardVO;
+import kr.smhrd.domain.SearchVO;
 import kr.smhrd.mapper.BoardMapper;
 
 //POJO
@@ -77,5 +78,13 @@ public class BoardController{ //new BoardController(); ->Spring container(DI)
 		 
 		return cnt; 
 	}
+//------------------------검색----------------------------
+	@RequestMapping("/boardSearch.do")
+	public String boardSearch(SearchVO vo, Model model) {
+	List<BoardVO> list=	BoardMapper.boardSearch(vo);
+	model.addAttribute("list",list);
+		return"boardList";
+	}
+	
 }
 

@@ -26,8 +26,9 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		
+				<!--파일 크기와 파일 경로 설정  -->
 		<multipart-config>
-         <location>C:\\upload\\temp</location>
+         <location>C:\\upload\\temp</location> <!-- 임시 저장소 -->
          <max-file-size>-1</max-file-size>
          <max-request-size>-1</max-request-size>
          <file-size-threshold>1024</file-size-threshold>
@@ -38,6 +39,7 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+    
     <!-- UTF-8 인코딩 설정 --> 
 <filter>
     <filter-name>encodingFilter</filter-name>

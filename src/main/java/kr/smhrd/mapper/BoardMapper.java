@@ -3,12 +3,12 @@ package kr.smhrd.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.smhrd.domain.BoardVO;
+import kr.smhrd.domain.SearchVO;
 @Mapper
 public interface BoardMapper {
 
@@ -35,7 +35,9 @@ public interface BoardMapper {
 		@Delete("delete from tbl_board where idx=#{idx}")
 		public int boardDeleteAjax(int idx);
 		
-		
+//------------------------------------------------검색--------------------------------------
+	
+		public List<BoardVO> boardSearch(SearchVO vo); // part=[title,writer,contents]	
 		
 		
 }
